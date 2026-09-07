@@ -33,6 +33,31 @@ def gematria(my_str):
     }
     return sum(GEMATRIA.get(letter,0) for letter in my_str)
 
+#5א
+def prime(num):
+    if num < 2:
+        return False
+    if num == 2:
+        return True
+    if num%2 == 0:
+        return False
+    else:
+        return all(num%i!=0 for i in range(3,int(num**0.5)+1))
+
+#5ב
+def twin_primes(primenum):
+    if prime(primenum+2):
+        return primenum+2
+    if prime(primenum-2):
+        return primenum-2
+    return None
+
+
+#5ג
+def primes_dict(num):
+    return {i:twin_primes(i) for i in range(2, num + 1) if prime(i)}
+
+
 
 
 
@@ -47,6 +72,21 @@ def main():
         print("invalid input")
         return
     print(are_anagrams(first,second))
+
+#5ב
+    myprime=input("enter number:\n")
+    try:
+        result = twin_primes(int(myprime))
+        if result is None:
+            print("invalid input")
+        else:
+            print(result)
+
+    except ValueError:
+        print("invalid input")
+
+
+
 
 if __name__ == '__main__':
     main()
