@@ -58,7 +58,24 @@ def primes_dict(num):
     return {i:twin_primes(i) for i in range(2, num + 1) if prime(i)}
 
 
+#6
+def add_3_dicts(d1,d2,d3):
+    return {k: tuple(set(d[k] for d in (d1, d2, d3) if k in d))
+            for k in d1.keys() | d2.keys() | d3.keys()}
 
+
+#7א
+def mult(num):
+    return num*2
+def square(num):
+    return num*num
+def inverse(num):
+    return 1/num
+func_list=[mult, square, inverse]
+
+#7ב
+def func_dict(collect, func_list):
+    return {func.__name__ :  [func(i) for i in collect] for func in func_list}
 
 
 def main():
